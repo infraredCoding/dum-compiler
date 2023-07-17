@@ -1,0 +1,28 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "src/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/infraredcoding/Coding/parcer",
+    "file": "/home/infraredcoding/Coding/parcer/src/main.c",
+    "output": "/home/infraredcoding/Coding/parcer/src/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "src/tac.o",
+      "src/tac.c"
+    ],
+    "directory": "/home/infraredcoding/Coding/parcer",
+    "file": "/home/infraredcoding/Coding/parcer/src/tac.c",
+    "output": "/home/infraredcoding/Coding/parcer/src/tac.o"
+  }
+]
