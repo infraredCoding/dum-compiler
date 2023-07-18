@@ -1,4 +1,5 @@
 #include "tac.h"
+#include "lexer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,6 +25,9 @@ TacDocument* load_tac_document(const char *src){
   TacDocument* document = (TacDocument*) malloc(sizeof(TacDocument));
   strcpy(document->src, src);
   document->buffer = buffer;
+  
+  tokenize_document(document);
+
   return document;
 }
 

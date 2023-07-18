@@ -1,4 +1,5 @@
 #ifndef TAC_H
+#define TAC_H
 
 typedef struct TacDoc {
   char* src;
