@@ -1,4 +1,5 @@
 #include "lexer.h"
+#include "token.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +18,6 @@ void free_lexer(Lexer *lexer){
 
 void tokenize_document(TacDocument* tac){
   Lexer* lexer = new_lexer(tac->buffer);
-  printf("Lexer %s\n", lexer->src);
   char buffer[256];
   int i = 0; // index of the particular word/symbol/token
   int lexi = 0; // index of the lexer in whole document
@@ -25,13 +25,15 @@ void tokenize_document(TacDocument* tac){
   while (lexer->src[lexi] != '\0') {
 
     if (lexer->src[lexi] == ' ' || lexer->src[lexi] == '\n'){
+      create_new_token(buffer);
       memset(buffer, 0, sizeof(buffer));
       lexi++;
       i = 0;
     }else if (lexer->src[lexi] == '(') {
       
-      printf("\tnew token: %s\n", buffer);
-      printf("\tnew token: (\n");
+      create_new_token(buffer);
+      create_new_token("(");
+
       lexi++;
       i = 0;
       memset(buffer, 0, sizeof(buffer));
@@ -46,11 +48,12 @@ void tokenize_document(TacDocument* tac){
         lexi++;
       }
 
-      printf("\tnew token: %s\n", buffer);
+      if (strlen(buffer) > 0)
+        create_new_token(buffer);
       memset(buffer, 0, sizeof(buffer));
       lexi++;
       i = 0;
-      printf("\tnew token: )\n");
+      create_new_token(")");
     }else {
         buffer[i] = lexer->src[lexi];
         i++;
